@@ -14,7 +14,7 @@ public class RandomSpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i <15; i++)
+        for (int i = 0; i <3; i++)
         {
             SpawnPlatform();
         }
@@ -30,6 +30,7 @@ public class RandomSpawner : MonoBehaviour
             SpawnPlatform();
             nextSpawnTime = Time.time + spawnInterval;
         }*/
+     
     }
 
     private void SpawnPlatform()
@@ -39,9 +40,11 @@ public class RandomSpawner : MonoBehaviour
 
         GameObject objectToSpawn = platformPrefab[Random.Range(0, platformPrefab.Length)];
 
-        Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+        GameObject spawnedObject = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
 
         Baslangicdegeri += plusYvaluse;
+
+        Destroy(spawnedObject,6f);
     }
 
 
